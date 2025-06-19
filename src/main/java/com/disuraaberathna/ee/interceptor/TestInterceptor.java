@@ -27,7 +27,8 @@ public class TestInterceptor {
 
     @AroundInvoke
     public Object intercept(InvocationContext ctx) throws Exception {
-        System.out.println("TestInterceptor - intercept");
+//        System.out.println("TestInterceptor - intercept");
+        System.out.println("TestInterceptor - intercept : start");
 
 //        Method method = ctx.getMethod();
 //        System.out.println("TestInterceptor - method" + method);
@@ -49,11 +50,18 @@ public class TestInterceptor {
 
         // Can not inject InvocationContext
 
-        Constructor<?> constructor = ctx.getConstructor();
-        System.out.println(constructor);
+//        Constructor<?> constructor = ctx.getConstructor();
+//        System.out.println(constructor);
 
-        ctx.proceed();
-        return null;
+        Object proceed = ctx.proceed();
+        System.out.println("TestInterceptor - intercept : proceed / " + proceed);
+
+        if (true)
+            throw new Exception("TestInterceptor exception");
+
+        System.out.println("TestInterceptor - intercept : end");
+
+        return proceed;
     }
 
     @PreDestroy
