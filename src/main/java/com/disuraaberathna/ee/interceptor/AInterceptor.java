@@ -1,10 +1,14 @@
 package com.disuraaberathna.ee.interceptor;
 
+import com.disuraaberathna.ee.annotation.Loggin;
 import jakarta.interceptor.AroundInvoke;
+import jakarta.interceptor.Interceptor;
 import jakarta.interceptor.InvocationContext;
 
 import java.util.Map;
 
+@Interceptor
+@Loggin
 public class AInterceptor {
     @AroundInvoke
     public Object aroundInvoke(InvocationContext ctx) throws Exception {
