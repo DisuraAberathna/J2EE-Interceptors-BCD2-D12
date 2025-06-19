@@ -8,7 +8,11 @@ import jakarta.interceptor.Interceptors;
 @Stateless
 @Interceptors({TestInterceptor.class, AInterceptor.class})
 public class UserSessionBean {
-    public void doAction(String name, int age) {
+    public String doAction(String name, int age) {
+        System.out.println("UserSessionBean - doAction : start");
         System.out.println("UserSessionBean - doAction : " + name + ", " + age);
+        System.out.println("UserSessionBean - doAction : end");
+
+        return "success";
     }
 }
